@@ -8,22 +8,16 @@ const UserLayout = (props: KktproPageProps) => {
 
   return (
     <UserLogin
-      buttons={[
-        {
-          title: '登录',
-          htmlType: 'submit',
-        },
-        {
-          title: '注册',
-          type: 'light',
-        },
-      ]}
-      api="/api/login"
-      btnProps={{ type: 'dark' }}
+      btnProps={{ type: "primary" }}
+      api="/api2/login"
       defaultFieldsConfig={{
-        userName: {},
-        passWord: {},
+        userName: { label: "用户名", name: "userName" },
+        passWord: { label: "密码", name: "password" },
       }}
+      styleContainer={{
+        background: "url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi-1-lanrentuku.qqxzb-img.com%2F2020%2F11%2F11%2Fef6f5575-ee2f-4113-b471-b8f0becf98c3.jpg%3FimageView2%2F2%2Fw%2F1024&refer=http%3A%2F%2Fi-1-lanrentuku.qqxzb-img.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648782888&t=33ace74f48bd36f363b577158171abd1)",
+      }}
+      projectName="Project"
       onSuccess={(data) => {
         if (data && data.token) {
           setCookie('token', data.token)
@@ -33,8 +27,6 @@ const UserLayout = (props: KktproPageProps) => {
           localStorage.setItem('auth', JSON.stringify(data.authList || []))
           navigate?.('/tableList', { replace: true })
         } else {
-          console.log('data', data);
-
           Notify.error({
             title: '错误通知',
             description: data.error || '请求失败',

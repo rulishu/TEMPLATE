@@ -3,8 +3,9 @@ const { authList } = require('./auth')
 let token = ''
 
 module.exports.login = function (req, res) {
-  const { password, username } = req.body
-  if (password === 'admin' && username === 'admin') {
+  console.log('req', req.body);
+  const { userName, password } = req.body
+  if (password === 'admin' && userName === 'admin') {
     token = '5c2d6d45-ec94-319c-a9c8-cae43e192b65'
     return res.json({
       updated_at: '2018/09/23 15:59:52',
