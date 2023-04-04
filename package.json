@@ -1,113 +1,81 @@
 {
-  "version": "4.0.0",
+  "name": "@examples/base",
+  "version": "6.1.0",
+  "description": "Use Rematch & TypeScript for the project.",
   "private": true,
-  "description": "UIW Admin Project",
+  "scripts": {
+    "start": "kktp start",
+    "build": "kktp build",
+    "doc": "kktp doc --entry=./build --local",
+    "test": "kktp test --env=jsdom",
+    "coverage": "kktp test --env=jsdom --coverage"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/uiwjs/uiw-admin.git"
   },
-  "scripts": {
-    "initi": "npm run clean && npm install",
-    "prepare": "husky install",
-    "-----authorized-----": "----------",
-    "build:authorized": "lerna exec --scope @uiw-admin/authorized -- tsbb build",
-    "watch:authorized": "lerna exec --scope @uiw-admin/authorized -- tsbb watch",
-    "-----layout-----": "----------",
-    "build:layout:ui": "lerna exec --scope @uiw-admin/basic-layouts -- tsbb build",
-    "watch:layout:ui": "lerna exec --scope @uiw-admin/basic-layouts -- tsbb watch",
-    "-----router-----": "----------",
-    "build:router:ui": "lerna exec --scope @uiw-admin/router-control -- tsbb build",
-    "watch:router:ui": "lerna exec --scope @uiw-admin/router-control -- tsbb watch",
-    "-----tabs-----": "----------",
-    "build:tabs:ui": "lerna exec --scope @uiw-admin/layout-tabs -- tsbb build",
-    "watch:tabs:ui": "lerna exec --scope @uiw-admin/layout-tabs -- tsbb watch",
-    "-----components-----": "----------",
-    "build:components:ui": "lerna exec --scope @uiw-admin/components -- tsbb build",
-    "watch:components:ui": "lerna exec --scope @uiw-admin/components -- tsbb watch",
-    "-----markdown-navbar-----": "----------",
-    "build:markdown-navbar": "lerna exec --scope @uiw-admin/markdown-navbar -- tsbb build",
-    "watch:markdown-navbar": "lerna exec --scope @uiw-admin/markdown-navbar -- tsbb watch",
-    "-----login-----": "----------",
-    "build:login:ui": "lerna exec --scope  @uiw-admin/user-login -- tsbb build",
-    "watch:login:ui": "lerna exec --scope  @uiw-admin/user-login -- tsbb watch",
-    "-----models-----": "----------",
-    "build:models": "lerna exec --scope @uiw-admin/models -- tsbb build",
-    "watch:models": "lerna exec --scope @uiw-admin/models -- tsbb watch",
-    "-----plugins-----": "----------",
-    "build:plugins": "lerna exec --scope @uiw-admin/plugins -- tsbb build --no-esm",
-    "watch:plugins": "lerna exec --scope @uiw-admin/plugins -- tsbb watch",
-    "-----config-----": "----------",
-    "build:config": "lerna exec --scope @uiw-admin/config -- tsbb build",
-    "watch:config": "lerna exec --scope @uiw-admin/config -- tsbb watch",
-    "-----create-uiw-admin-----": "----------",
-    "build:create": "lerna exec --scope create-uiw-admin -- npm run build",
-    "-----------": "--------------",
-    "build:utils": "lerna exec --scope @uiw-admin/utils -- tsbb build",
-    "watch:utils": "lerna exec --scope @uiw-admin/utils -- tsbb watch",
-    "build": "lerna exec --scope @uiw-admin/* -- tsbb build src/*.{ts,tsx,js,jsx} --use-babel",
-    "watch": "lerna exec --scope @uiw-admin/* -- tsbb watch",
-    "build:website": "lerna exec --scope @examples/base -- npm run build",
-    "----": "----",
-    "build:js": "node ./script/copy",
-    "----------": "-------------",
-    "www": "lerna exec --scope website -- npm run start",
-    "www:build": "lerna exec --scope website -- npm run build",
-    "-----www-doc-end-----": "-------website-doc------",
-    "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
-    "publish": "npm run build && lerna publish from-package",
-    "start": "lerna exec --scope @examples/base npm run start",
-    "start:website": "lerna exec --scope website npm run start",
-    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "clean": "lerna clean && npm run remove && rm -rf ./package-lock.json && rm -rf node_modules && npm run remove:c ",
-    "remove": " lerna exec --scope @uiw-admin/* --scope @example/*  -- rm -rf package-lock.json",
-    "remove:c": "rm -rf package-lock.json &&  npm run remove:yarn && npm run remove:lib && npm run remove:esm",
-    "remove:yarn": "lerna exec --scope @uiw-admin/* --scope @example/*  -- rm -rf yarn.lock",
-    "remove:lib": "lerna exec --scope @uiw-admin/*  -- rm -rf ./lib",
-    "remove:esm": "lerna exec --scope @uiw-admin/*  -- rm -rf ./esm",
-    "test": "tsbb test",
-    "tsbb": "tsbb",
-    "lerna": "lerna"
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@babel/runtime": ">=7.21.0",
+    "@swc-node/core": ">=1.10.1",
+    "@swc-node/register": ">=1.6.1",
+    "@swc/core": ">=1.3.55"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "dependencies": {
+    "@kkt/pro": "^1.0.10",
+    "@uiw-admin/authorized": "6.1.0",
+    "@uiw-admin/basic-layouts": "6.1.0",
+    "@uiw-admin/components": "6.1.0",
+    "@uiw-admin/config": "6.1.0",
+    "@uiw-admin/document-title": "6.1.0",
+    "@uiw-admin/exceptions": "6.1.0",
+    "@uiw-admin/layout-tabs": "6.1.0",
+    "@uiw-admin/router-control": "6.1.0",
+    "@uiw-admin/user-login": "6.1.0",
+    "@uiw-admin/utils": "6.1.0",
+    "@uiw/reset.css": "~1.0.5",
+    "axios": "^0.27.0",
+    "classnames": "~2.3.1",
+    "styled-components": "^5.3.5",
+    "swr": "2.1.0",
+    "uiw": "^5.0.0-bate-5"
+  },
+  "devDependencies": {
+    "lint-staged": "~12.5.0",
+    "pirates": "~4.0.5",
+    "prettier": "^2.7.0",
+    "yorkie": "~2.0.0"
   },
   "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
     "*.{js,jsx,ts,tsx,less,md,json}": [
       "prettier --write"
     ]
   },
-  "jest": {
-    "testMatch": [
-      "<rootDir>/test/*.test.{js,ts}"
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "uiw-admin"
     ]
   },
-  "author": "jaywcjlove",
-  "license": "MIT",
-  "dependencies": {
-    "@babel/preset-typescript": "~7.21.0",
-    "@babel/core": "~7.21.3",
-    "ajv": "^8.9.0",
-    "husky": "~7.0.4",
-    "lerna": "~5.1.0",
-    "lint-staged": "~12.5.0",
-    "prettier": "^2.7.0",
-    "tsbb": "^4.0.5",
-    "webpack-bundle-analyzer": "~4.5.0"
-  },
-  "resolutions": {
-    "@babel/parser": "7.21.3",
-    "@babel/traverse": "7.21.3",
-    "@babel/types": "7.21.3"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "examples/*",
-      "create-uiw-admin",
-      "eslint-packages/*"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "nohoist": []
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
