@@ -20,11 +20,10 @@ const UserLayout = (props: KktproPageProps) => {
       ]}
       api="/api/login"
       btnProps={{ type: 'dark' }}
-      saveField={{
-        userName: 'username',
-        passWord: 'password',
+      defaultFieldsConfig={{
+        userName: {},
+        passWord: {},
       }}
-      // onBefore={(store) => ({ a: 12, b: 1221, ...store })}
       onSuccess={(data) => {
         if (data && data.token) {
           setCookie('token', data.token)
@@ -32,8 +31,10 @@ const UserLayout = (props: KktproPageProps) => {
           sessionStorage.setItem('auth', JSON.stringify(data.authList || []))
           localStorage.setItem('token', data.token)
           localStorage.setItem('auth', JSON.stringify(data.authList || []))
-          navigate?.('/home', { replace: true })
+          navigate?.('/tableList', { replace: true })
         } else {
+          console.log('data', data);
+
           Notify.error({
             title: '错误通知',
             description: data.error || '请求失败',
