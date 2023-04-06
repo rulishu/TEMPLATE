@@ -45,33 +45,26 @@ function BasicLayoutScreen(props: KktproPageProps) {
       avatar: require('../assets/head.png'),
       menuLeft: (
         <div style={{ marginRight: 15 }}>
-          <Badge count={66}>
-            <Icon
-              type="bell"
-              // color="#fff"
-              style={{ fontSize: 20 }}
-            />
-          </Badge>
+          {/* <Badge count={66}> */}
+          <Icon
+            type="bell"
+            style={{ fontSize: 20 }}
+          />
+          {/* </Badge> */}
         </div>
       ),
     },
     layouts,
     routes: props.routes as any,
     headerLayout: 'top',
-    headerBackground: '#343a40',
-    headerFontColor: '#fff',
+    // headerBackground: '#343a40',
+    // headerFontColor: '#fff',
+
   }
 
   return (
     <AuthPage authority={true} redirectPath="/login">
-      <BasicLayout
-        {...basicLayoutProps}
-        routes={route as any}
-        onLogoClick={(event: any) => {
-          // history.push("/demo#/tableList");
-          console.log('logo点击事件', event)
-        }}
-        isDefaultContentStyle={false}>
+      <BasicLayout {...basicLayoutProps} routes={route as any}>
         <Outlet />
       </BasicLayout>
     </AuthPage>
