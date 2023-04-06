@@ -8,10 +8,10 @@
     "element": "@/layouts/BasicLayout",
     "children": [
       {
-        "path": "/tableList",
-        "name": "查询表格",
-        "element": "@/pages/TableList",
-        "icon": "search"
+        "path": "/home",
+        "name": "首页",
+        "element": "@/pages/Home",
+        "icon": "home"
       }
     ]
   }
