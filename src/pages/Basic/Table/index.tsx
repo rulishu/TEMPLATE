@@ -1,10 +1,10 @@
-import { Table, Empty, Button, Card, Pagination } from 'uiw'
+import { Table, Empty, Button, Card, Pagination, Alert } from 'uiw'
 import { useDispatch, useSelector, Dispatch, RootState } from '@kkt/pro';
 import { columns } from './item'
 
 const Index = () => {
   const {
-    basic: { dataList, page, pageSize, total },
+    basic: { dataList, page, pageSize, total, delVisible },
   } = useSelector((state: RootState) => state);
   const dispatch = useDispatch<Dispatch>();
 
@@ -41,6 +41,34 @@ const Index = () => {
       })
 
     }
+    if (type === 'delete') {
+      dispatch({
+        type: 'basic/update',
+        payload: {
+          delVisible: true,
+          payload: {
+            delId: data.id
+          }
+        }
+      })
+    }
+  }
+  const onClose = () => {
+    dispatch({
+      type: 'basic/update',
+      payload: {
+        editType: 'none',
+        editVisible: false,
+        formData: {},
+        delVisible: false
+      }
+    })
+  }
+  const onConfirm = () => {
+    dispatch({
+      type: '',
+      payload: {}
+    })
   }
   return (
     <Card >
@@ -64,6 +92,17 @@ const Index = () => {
             }}
           />
         }
+      />
+      <Alert
+        isOpen={delVisible}
+        confirmText="确定"
+        cancelText="取消"
+        icon="warning"
+        type="warning"
+        onConfirm={() => onConfirm()}
+        onCancel={() => onClose()}
+        onClosed={() => onClose()}
+        content="您确定要删除吗？"
       />
     </Card>
   )

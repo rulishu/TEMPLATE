@@ -6,7 +6,7 @@ const Basic = {
     search: {},
     page: 1,
     pageSize: 20,
-    total: 0,
+    total: 10,
     dataList: [
       { name: '邓紫棋', age: '12', info: '又名G.E.M.，原名邓诗颖，1991年8月16日生于中国上海，中国香港创作型女歌手。', edit: '' },
       { name: '李易峰', age: '32', info: '1987年5月4日出生于四川成都，中国内地男演员、流行乐歌手、影视制片人', edit: '' },
@@ -16,11 +16,10 @@ const Basic = {
 
     editVisible: false,
     editType: "none",
-    formData: {
-      input: '输入了'
-    },
+    formData: {},
 
-
+    delVisible: false,
+    delId: 0,
   },
   reducers: {
     update: (state: any, payload: any) => ({

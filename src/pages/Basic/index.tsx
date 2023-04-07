@@ -1,13 +1,13 @@
 import Search from './Search';
 import Table from './Table';
-import AddFrom from './AddFrom'
+import Modal from './Modal'
 
 const Index = () => {
   return (
     <div>
       <Search />
       <Table />
-      <AddFrom />
+      <Modal />
     </div>
   )
 }
