@@ -1,16 +1,17 @@
-import { Table, Empty, Button, Card, Pagination, Alert } from 'uiw'
+/* eslint-disable no-empty-function */
+import { Table, Empty, Button, Card, Pagination } from 'uiw'
 import { useDispatch, useSelector, Dispatch, RootState } from '@kkt/pro';
 import { columns } from './item'
 
 const Index = () => {
   const {
-    basic: { dataList, page, pageSize, total, delVisible },
+    check: { dataList, page, pageSize, total, checked },
   } = useSelector((state: RootState) => state);
   const dispatch = useDispatch<Dispatch>();
 
   const addModal = () => {
     dispatch({
-      type: "basic/update",
+      type: "check/update",
       payload: {
         editVisible: true,
         editType: 'add',
@@ -18,22 +19,23 @@ const Index = () => {
       },
     });
   };
+  const delModal = () => { }
   const onTurnPages = (current: any) => {
     // dispatch({
-    //   type: "basic/update",
+    //   type: "check/update",
     //   payload: {},
     // });
   }
   const handle = async (type: any, data: any) => {
     await dispatch({
-      type: 'basic/update',
+      type: 'check/update',
       payload: {
         editType: type,
       }
     })
     if (type === 'edit') {
       dispatch({
-        type: 'basic/update',
+        type: 'check/update',
         payload: {
           editVisible: true,
           formData: { ...data }
@@ -43,7 +45,7 @@ const Index = () => {
     }
     if (type === 'delete') {
       dispatch({
-        type: 'basic/update',
+        type: 'check/update',
         payload: {
           delVisible: true,
           payload: {
@@ -53,32 +55,19 @@ const Index = () => {
       })
     }
   }
-  const onClose = () => {
-    dispatch({
-      type: 'basic/update',
-      payload: {
-        editType: 'none',
-        editVisible: false,
-        formData: {},
-        delVisible: false
-      }
-    })
-  }
-  const onConfirm = () => {
-    dispatch({
-      type: '',
-      payload: {}
-    })
-  }
+
   return (
     <Card noHover={true}>
       <div style={{ marginBottom: 15 }}>
         <Button icon="plus" type="primary" onClick={() => addModal()}>
           新增
         </Button>
+        <Button icon="delete" type="primary" onClick={() => delModal()}>
+          删除
+        </Button>
       </div>
       <Table
-        columns={columns(handle)}
+        columns={columns(handle, dataList, checked)}
         data={dataList}
         empty={<Empty />}
         footer={
@@ -92,17 +81,6 @@ const Index = () => {
             }}
           />
         }
-      />
-      <Alert
-        isOpen={delVisible}
-        confirmText="确定"
-        cancelText="取消"
-        icon="warning"
-        type="warning"
-        onConfirm={() => onConfirm()}
-        onCancel={() => onClose()}
-        onClosed={() => onClose()}
-        content="您确定要删除吗？"
       />
     </Card>
   )

@@ -5,14 +5,14 @@ import { editFormData } from './item'
 
 const Modal = () => {
   const {
-    basic: { editVisible, editType, formData }
+    check: { editVisible, editType, formData }
   } = useSelector((state: RootState) => state)
   const dispatch = useDispatch<Dispatch>();
   const form = useForm()
 
   const onClose = () => {
     dispatch({
-      type: 'basic/update',
+      type: 'check/update',
       payload: {
         editType: 'none',
         editVisible: false,
@@ -22,7 +22,7 @@ const Modal = () => {
   }
   const onScreenSubmit = (current: any) => {
     dispatch({
-      type: 'basic/update',
+      type: 'check/update',
       payload: {
         formData: {
           ...formData,

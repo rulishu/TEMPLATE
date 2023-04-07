@@ -18,6 +18,12 @@
         "name": "基础页",
         "element": "@/pages/Basic",
         "icon": "user"
+      },
+      {
+        "path": "/check",
+        "name": "列表多选页",
+        "element": "@/pages/Check",
+        "icon": "square-o"
       }
     ]
   }
