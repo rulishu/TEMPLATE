@@ -2,7 +2,7 @@ import BasicLayout, {
   useLayouts,
   BasicLayoutProps,
 } from '@uiw-admin/basic-layouts'
-import { Badge, Icon } from 'uiw'
+import { Icon } from 'uiw'
 import useSWR from 'swr'
 import { Outlet } from 'react-router-dom'
 import AuthPage from '@uiw-admin/authorized'

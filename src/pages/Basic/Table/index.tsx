@@ -4,7 +4,7 @@ import { columns } from './item'
 
 const Index = () => {
   const {
-    basic: { dataList, page, pageSize, total, delVisible },
+    basic: { dataList, page, pageSize, total, delVisible, formData },
   } = useSelector((state: RootState) => state);
   const dispatch = useDispatch<Dispatch>();
 
@@ -36,7 +36,7 @@ const Index = () => {
         type: 'basic/update',
         payload: {
           editVisible: true,
-          formData: { ...data }
+          formData: { ...formData, ...data }
         }
       })
 

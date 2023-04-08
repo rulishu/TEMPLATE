@@ -1,5 +1,7 @@
 
-export const editFormData = () => {
+export const editFormData = (
+  formData: any
+) => {
 
   return [
     {
@@ -33,7 +35,7 @@ export const editFormData = () => {
       label: "职位",
       key: "position",
       widget: "input",
-      initialValue: '',
+      initialValue: formData?.name,
       span: "24",
       rules: [
         { required: true, message: '请输入职位' },
@@ -43,7 +45,7 @@ export const editFormData = () => {
       label: "试用期内对工作的总结",
       key: "summary",
       widget: "textarea",
-      initialValue: '',
+      initialValue: formData?.info,
       span: "24",
       required: true,
       rules: [

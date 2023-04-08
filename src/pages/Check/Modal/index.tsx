@@ -54,7 +54,7 @@ const Modal = () => {
           cardProps={{
             noHover: true,
           }}
-          formDatas={editFormData()}
+          formDatas={editFormData(formData)}
         />
       </Drawer>
 

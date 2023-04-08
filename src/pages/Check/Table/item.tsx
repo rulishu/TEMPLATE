@@ -1,7 +1,6 @@
-/* eslint-disable no-empty-function */
 import { dispatch } from '@kkt/pro';
-import { Button, Checkbox } from 'uiw';
-
+import { Checkbox } from 'uiw';
+import { TipButton } from '@/components/TipButton';
 
 export const columns = (
   handle: (e: any, rowData: any) => void,
@@ -9,23 +8,36 @@ export const columns = (
   dataList: any[],
 ) => {
 
-  const onClickCheckedItem = () => { }
+  const onClickCheckedItem = (rowData: any, e: any) => {
+    const isChecked = e.target.checked;
+    let check = [...checked] as any[];
+    if (isChecked) {
+      // 添加到选中数组中
+      check.push(rowData.id);
+      check = check.sort((a, b) => a - b);
+    } else {
+      // 删除选中项
+      check.splice(check.indexOf(rowData.id), 1);
+    }
+    dispatch({
+      type: "check/update",
+      payload: { checked: check },
+    });
+  }
   return [
     {
       title: (data: any, rowNum: any, colNum: any) => {
         const indeterminate = dataList.length !== checked.length && checked.length > 0;
-        const isChecked = dataList.length === checked.length;
+        const isChecked = dataList.length === checked.length && dataList.length > 0;
         return (
           <Checkbox
             checked={isChecked}
             indeterminate={indeterminate}
-            onClick={(e) => {
-              console.log('e', e.target);
-
-              let checkedIdx = dataList.map((item, idx) => idx);
-              // if (!e.target.checked) {
-              //   checkedIdx = [];
-              // }
+            onClick={(e: any) => {
+              let checkedIdx = dataList.map((item) => item.id);
+              if (!e.target.checked) {
+                checkedIdx = [];
+              }
               dispatch({
                 type: 'check/update',
                 payload: {
@@ -40,7 +52,10 @@ export const columns = (
       width: 80,
       render: (text: any, key: any, rowData: any, rowNumber: any, columnNumber: any) => {
         return (
-          <Checkbox checked={rowData.checked} onClick={() => onClickCheckedItem()} />
+          <Checkbox
+            checked={rowData.checked}
+            onClick={(e) => onClickCheckedItem(rowData, e)}
+          />
         );
       }
     },
@@ -60,15 +75,15 @@ export const columns = (
     {
       title: '操作',
       key: 'edit',
-      width: 200,
+      width: 80,
       render: (text: any, key: any, rowData: any, rowNumber: any, columnNumber: any) => (
         <div>
-          <Button
+          <TipButton
+            tip='编辑'
             type="primary"
+            icon='edit'
             onClick={() => handle('edit', rowData)}
-          >
-            编辑
-          </Button>
+          />
         </div>
       ),
     },

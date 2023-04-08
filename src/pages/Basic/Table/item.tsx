@@ -1,4 +1,5 @@
-import { Button } from 'uiw';
+// import { Button } from 'uiw';
+import { TipButton } from '@/components/TipButton'
 
 export const columns = (
   handle: (e: any, rowData: any) => void,
@@ -23,17 +24,18 @@ export const columns = (
       width: 200,
       render: (text: any, key: any, rowData: any, rowNumber: any, columnNumber: any) => (
         <div>
-          <Button
+          <TipButton
+            tip="编辑"
+            icon="edit"
             type="primary"
             onClick={() => handle('edit', rowData)}
-          >
-            编辑
-          </Button>
-          <Button
+          />
+          <TipButton
+            tip="删除"
+            icon="delete"
             type="primary"
-            onClick={() => { handle('delete', rowData) }}>
-            删除
-          </Button>
+            onClick={() => { handle('delete', rowData) }}
+          />
         </div>
       ),
     },

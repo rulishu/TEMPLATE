@@ -5,7 +5,7 @@ import { columns } from './item'
 
 const Index = () => {
   const {
-    check: { dataList, page, pageSize, total, checked },
+    check: { dataList, page, pageSize, total, checked, formData },
   } = useSelector((state: RootState) => state);
   const dispatch = useDispatch<Dispatch>();
 
@@ -38,7 +38,7 @@ const Index = () => {
         type: 'check/update',
         payload: {
           editVisible: true,
-          formData: { ...data }
+          formData: { ...formData, ...data }
         }
       })
 
@@ -48,9 +48,7 @@ const Index = () => {
         type: 'check/update',
         payload: {
           delVisible: true,
-          payload: {
-            delId: data.id
-          }
+          // delId: data.id
         }
       })
     }
