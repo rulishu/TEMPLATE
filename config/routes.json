@@ -5,7 +5,7 @@
   },
   {
     "path": "/",
-    "element": "@/layouts/BasicLayout",
+    "element": "@/layouts/LeftBasicLayout/BasicLayout",
     "children": [
       {
         "path": "/home",
