@@ -1,4 +1,3 @@
-// import { useMemo } from 'react';
 import { Menu } from 'uiw';
 import { KktproPageProps, Outlet, useLocation } from '@kkt/pro';
 import './index.less'
@@ -6,13 +5,6 @@ import './index.less'
 const LeftMenus = (props: KktproPageProps) => {
   const { navigate, routes } = props;
   const { pathname } = useLocation();
-
-  // console.log('routes', routes);
-
-  // const menus = useMemo(() => {
-
-  //   return
-  // }, [])
 
   const onClick = (item: any) => {
     navigate(item.path)
