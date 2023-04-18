@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LayoutWrap = styled.div`
-height: calc(100%-59px)
+height: calc(100%-59px);
 `
 export const RightContent = styled.div`
 padding-left: 260px;
@@ -22,6 +22,8 @@ border-right: 1px solid #d9d9d9;
 `
 
 export const HeaderWrap = styled.div`
-
+top: 0;
+left: 0;
+height: 59px;
 `
 

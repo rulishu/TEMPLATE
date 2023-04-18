@@ -1,13 +1,13 @@
 import Search from './Search';
 import Table from './Table';
 import Modal from './Modal'
-import { Divider } from 'uiw';
+// import { Divider } from 'uiw';
 
 const Index = () => {
   return (
     <div>
       <Search />
-      <Divider />
+      {/* <Divider /> */}
       <Table />
       <Modal />
     </div>

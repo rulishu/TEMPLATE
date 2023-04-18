@@ -1,11 +1,11 @@
 import { KktproPageProps } from "@kkt/pro";
+import '../style/index'
 
 
 const Index = (props: KktproPageProps) => {
-  console.log('props', props);
 
   return (
-    <div>
+    <div className="header">
       111
     </div>
   )

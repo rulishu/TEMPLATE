@@ -20,15 +20,15 @@ const Index = () => {
   return (
     <div style={{ marginBottom: 15 }}>
       <ProForm
-        formType="card"
+        formType="pure"
         showSaveButton
         showResetButton
         saveButtonProps={{
           type: "primary",
         }}
-        cardProps={{
-          noHover: true,
-        }}
+        // cardProps={{
+        //   noHover: true,
+        // }}
         onChange={(_, current) => { onValuesChange(_, current) }}
         formDatas={formSearch()}
       />
